@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Sala" table="SALA" schema="BIB" optimistic-lock="version">
+        <id name="idPrestamo" type="int">
+            <column name="ID_PRESTAMO" precision="8" scale="0" />
+            <generator class="foreign">
+                <param name="property">prestamo</param>
+            </generator>
+        </id>
+        <one-to-one name="prestamo" class="entity.Prestamo" constrained="true"></one-to-one>
+        <property name="horaDevolucion" type="date">
+            <column name="HORA_DEVOLUCION" length="7" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Tipo" table="TIPO" schema="BIB" optimistic-lock="version">
+        <id name="idTipo" type="int">
+            <column name="ID_TIPO" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreTipo" type="string">
+            <column name="NOMBRE_TIPO" length="50" not-null="true" />
+        </property>
+        <one-to-one name="tipoLibro" class="entity.TipoLibro"></one-to-one>
+        <one-to-one name="tipoMedio" class="entity.TipoMedio"></one-to-one>
+        <set name="documentos" table="DOCUMENTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_TIPO" precision="1" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.Documento" />
+        </set>
+    </class>
+</hibernate-mapping>

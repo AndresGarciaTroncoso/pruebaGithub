@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Comuna" table="COMUNA" schema="BIB" optimistic-lock="version">
+        <id name="idComuna" type="int">
+            <column name="ID_COMUNA" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="region" class="entity.Region" fetch="select">
+            <column name="ID_REGION" precision="11" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="comunaNombre" type="string">
+            <column name="COMUNA_NOMBRE" length="100" not-null="true" />
+        </property>
+        <set name="usuarios" table="USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_COMUNA" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

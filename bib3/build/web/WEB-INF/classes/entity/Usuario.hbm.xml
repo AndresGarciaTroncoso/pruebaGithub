@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Usuario" table="USUARIO" schema="BIB" optimistic-lock="version">
+        <id name="idUsuario" type="int">
+            <column name="ID_USUARIO" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rol" class="entity.Rol" fetch="select">
+            <column name="ID_ROL" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="comuna" class="entity.Comuna" fetch="select">
+            <column name="ID_COMUNA" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="rut" type="string">
+            <column name="RUT" length="13" not-null="true" />
+        </property>
+        <property name="usr" type="string">
+            <column name="USR" length="50" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="CONTRASENA" length="30" not-null="true" />
+        </property>
+        <property name="nombrePrimer" type="string">
+            <column name="NOMBRE_PRIMER" length="50" not-null="true" />
+        </property>
+        <property name="nombreSegundo" type="string">
+            <column name="NOMBRE_SEGUNDO" length="50" not-null="true" />
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column name="APELLIDO_PATERNO" length="50" not-null="true" />
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column name="APELLIDO_MATERNO" length="50" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="50" not-null="true" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="TELEFONO" precision="9" scale="0" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="50" not-null="true" />
+        </property>
+        <property name="activado" type="char">
+            <column name="ACTIVADO" length="1" not-null="true" />
+        </property>
+        <set name="reservas" table="RESERVA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.Reserva" />
+        </set>
+        <set name="solicitudPrestamos" table="SOLICITUD_PRESTAMO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.SolicitudPrestamo" />
+        </set>
+        <set name="prestamos" table="PRESTAMO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.Prestamo" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.TipoMedio" table="TIPO_MEDIO" schema="BIB" optimistic-lock="version">
+        <id name="idTipo" type="int">
+            <column name="ID_TIPO" precision="8" scale="0" />
+            <generator class="foreign">
+                <param name="property">tipo</param>
+            </generator>
+        </id>
+        <one-to-one name="tipo" class="entity.Tipo" constrained="true"></one-to-one>
+        <property name="nombreTipoMedio" type="string">
+            <column name="NOMBRE_TIPO_MEDIO" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

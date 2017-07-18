@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.connection.username">bib</property>
+    <property name="hibernate.connection.password">123</property>
+    <mapping resource="entity/Prestamo.hbm.xml"/>
+    <mapping resource="entity/Ejemplar.hbm.xml"/>
+    <mapping resource="entity/Categoria.hbm.xml"/>
+    <mapping resource="entity/Autor.hbm.xml"/>
+    <mapping resource="entity/Usuario.hbm.xml"/>
+    <mapping resource="entity/Editorial.hbm.xml"/>
+    <mapping resource="entity/SolicitudPrestamo.hbm.xml"/>
+    <mapping resource="entity/Comuna.hbm.xml"/>
+    <mapping resource="entity/Ubicacion.hbm.xml"/>
+    <mapping resource="entity/Estado.hbm.xml"/>
+    <mapping resource="entity/Sala.hbm.xml"/>
+    <mapping resource="entity/TipoMedio.hbm.xml"/>
+    <mapping resource="entity/Domicilio.hbm.xml"/>
+    <mapping resource="entity/Edicion.hbm.xml"/>
+    <mapping resource="entity/Documento.hbm.xml"/>
+    <mapping resource="entity/Region.hbm.xml"/>
+    <mapping resource="entity/Tipo.hbm.xml"/>
+    <mapping resource="entity/Rol.hbm.xml"/>
+    <mapping resource="entity/Reserva.hbm.xml"/>
+    <mapping resource="entity/TipoLibro.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

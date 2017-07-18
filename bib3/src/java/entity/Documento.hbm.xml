@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-05-2017 13:33:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Documento" table="DOCUMENTO" schema="BIB" optimistic-lock="version">
+        <id name="idDocumento" type="int">
+            <column name="ID_DOCUMENTO" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edicion" class="entity.Edicion" fetch="select">
+            <column name="ID_EDICION" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="editorial" class="entity.Editorial" fetch="select">
+            <column name="ID_EDITORIAL" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipo" class="entity.Tipo" fetch="select">
+            <column name="ID_TIPO" precision="1" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="autor" class="entity.Autor" fetch="select">
+            <column name="ID_AUTOR" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="categoria" class="entity.Categoria" fetch="select">
+            <column name="ID_CATEGORIA" precision="3" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="TITULO" length="50" not-null="true" />
+        </property>
+        <property name="anoPublicacion" type="date">
+            <column name="ANO_PUBLICACION" length="7" not-null="true" />
+        </property>
+        <set name="ejemplars" table="EJEMPLAR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_DOCUMENTO" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entity.Ejemplar" />
+        </set>
+    </class>
+</hibernate-mapping>
